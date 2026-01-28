@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{fragments/head.html :: head}"></div>
+<body>
+
+<h1 style="text-align: center;margin: 0px auto;display: block;color: red;padding-bottom: 1em;" th:text="${intestazione}"></h1>
+<h3 style="text-align: center;margin: 0px auto;display: block;color: green;" th:text="${saluti}"></h3>
+
+
+<div th:insert="~{fragments/foot.html :: foot}"></div>
+</body>
+</html>
