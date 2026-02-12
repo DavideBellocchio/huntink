@@ -13,7 +13,7 @@ public class IndexMvcController {
     public String getWelcome(Model model)
     {
         model.addAttribute("intestazione", "HUNTINK");
-        model.addAttribute("saluti", saluti);
+        model.addAttribute("saluti", saluti);// nome del file :: fragment
 
         return "index";
     }
