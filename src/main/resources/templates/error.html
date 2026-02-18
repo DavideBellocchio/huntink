@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="d-flex flex-column min-vh-100">
+<div th:insert="~{fragments/header.html :: header}"></div>
+<main class="flex-fill">
+    <div class="error-container">
+        <div class="lottie-animation"></div>
+        <div class="error-content">
+            <h1>404</h1>
+            <p>Oops! Pagina non trovata.</p>
+            <a href="/" class="btn btn-dark">Home</a>
+        </div>
+    </div>
+</main>
+<div th:insert="~{fragments/foot.html :: foot}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+<script>
+    const animation = lottie.loadAnimation({
+      container: document.querySelector('.lottie-animation'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://lottie.host/d987597c-7676-4424-8817-7fca6dc1a33e/BVrFXsaeui.json'
+    });
+</script>
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,4 +28,21 @@ public class TatuaggioMvcController {
 
         return "tatuaggi";
     }
+
+    @GetMapping("/search")
+    public String cercaTatuaggi(@RequestParam(name="parametro", required = true) String parametro,
+                                @RequestParam(name="valore") String valore,
+                                Model model)
+    {
+
+        List<TatuaggioDto> tatuaggi = tatuaggioService.searchTatuaggi(parametro, valore);
+
+        model.addAttribute("tatuaggi", tatuaggi);
+        model.addAttribute("parametro", parametro);
+        model.addAttribute("valore", valore);
+
+        return "tatuaggi";
+    }
+
+
 }

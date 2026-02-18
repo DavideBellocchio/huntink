@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:insert="~{fragments/head.html :: head}"></head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <div th:insert="~{fragments/header.html :: header}"></div>
-        <main class="vh-100">
+        <main class="flex-fill">
             <h1 style="text-align: center;margin: 0px auto;display: block;color: red;padding-bottom: 1em;" th:text="${intestazione}"></h1>
             <h3 style="text-align: center;margin: 0px auto;display: block;color: green;" th:text="${saluti}"></h3>
         </main>

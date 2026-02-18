@@ -21,15 +21,15 @@ public class TatuaggioValidatorDto {
     @NotBlank(message = "{NotBlank.Tatuaggio.nome.Validation}")
     private String nome;
 
-    @Max(value = 999, message = "{Max.Tatuaggio.altezza.Validation}")
-    @DecimalMin(value = "0.01", message = "{Min.Tatuaggio.altezza.Validation}")
-    @NotNull(message = "{NotNull.Tatuaggio.altezza.Validation}")
-    private double altezza;
+    //@Max(value = 999, message = "{Max.Tatuaggio.altezza.Validation}")
+    //@DecimalMin(value = "0.01", message = "{Min.Tatuaggio.altezza.Validation}")
+    //@NotNull(message = "{NotNull.Tatuaggio.altezza.Validation}")
+    //private double altezza;
 
-    @Max(value = 999, message = "{Max.Tatuaggio.larghezza.Validation}")
-    @DecimalMin(value = "0.01", message = "{Min.Tatuaggio.larghezza.Validation}")
-    @NotNull(message = "{NotNull.Tatuaggio.larghezza.Validation}")
-    private double larghezza;
+    //@Max(value = 999, message = "{Max.Tatuaggio.larghezza.Validation}")
+    //@DecimalMin(value = "0.01", message = "{Min.Tatuaggio.larghezza.Validation}")
+    //@NotNull(message = "{NotNull.Tatuaggio.larghezza.Validation}")
+    //private double larghezza;
 
     @NotNull(message = "{NotNull.Tatuaggio.stile.Validation}")
     private StileTatuaggio stile;
@@ -37,8 +37,8 @@ public class TatuaggioValidatorDto {
     @NotNull(message = "{NotNull.Tatuaggio.colore.Validation}")
     private ColoreTatuaggio colore;
 
-    @NotNull(message = "{NotNull.Tatuaggio.data.Validation}")
-    private LocalDate data;
+    //@NotNull(message = "{NotNull.Tatuaggio.data.Validation}")
+    //private LocalDate data;
 
 
 }

@@ -23,11 +23,11 @@ public class Tatuaggio {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private double altezza;
+    //@Column(nullable = false)
+    //private double altezza;
 
-    @Column(nullable = false)
-    private double larghezza;
+    //@Column(nullable = false)
+    //private double larghezza;
 
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
@@ -36,6 +36,9 @@ public class Tatuaggio {
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
     private ColoreTatuaggio colore;
+
+    @Column(nullable = false, length = 50)
+    private String immagine;
 
     @Column(nullable = false)
     private LocalDate data;

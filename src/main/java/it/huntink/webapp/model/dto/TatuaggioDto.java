@@ -17,9 +17,10 @@ public class TatuaggioDto {
 
     private Long id;
     private String nome;
-    private double altezza;
-    private double larghezza;
+    //private double altezza;
+    //private double larghezza;
     private StileTatuaggio stile;
     private ColoreTatuaggio colore;
+    private String immagine;
     private LocalDate data;
 }

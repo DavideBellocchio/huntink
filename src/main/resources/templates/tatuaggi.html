@@ -1,74 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{fragments/head.html :: head}"></head>
-<body>
+<body  class="d-flex flex-column min-vh-100">
 <div th:insert="~{fragments/header.html :: header}"></div>
-<main class="vh-100">
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Album example</h1>
-                <p class="lead text-body-secondary">
-                    Something short and leading about the collection below—its
-                    contents, the creator, etc. Make it short and sweet, but not too
-                    short so folks don’t simply skip over it entirely.
-                </p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                </p>
+<main class="flex-fill">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="GET" th:action="@{/tatuaggi/search}">
+                    <div class="input-group mb-3">
+                        <select class="form-select" name="parametro" style="max-width: 150px;">
+                            <option value="all" th:selected="${parametro == null or parametro == '' or parametro == 'all'}">Tutti</option>
+                            <option value="nome" th:selected="${parametro == 'nome'}">Nome</option>
+                            <option value="colore" th:selected="${parametro == 'colore'}">Colore</option>
+                            <option value="stile" th:selected="${parametro == 'stile'}">Stile</option>
+                        </select>
+                        <input type="text" class="form-control" name="valore" th:value="${valore}" placeholder="Cerca...">
+                        <button class="btn btn-dark" type="submit">Cerca</button>
+                    </div>
+                </form>
+            </div>
+            <div th:if="${message != null}">
+                <p th:text="${message}" class="text-center text-danger" ></p>
             </div>
         </div>
-    </section>
+    </div>
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
+            <div class="col-12 text-center" th:if="${#lists.isEmpty(tatuaggi)}" style="min-height: 500px;">
+                Nessun tatuaggio trovato
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:if="${#lists.isEmpty(tatuaggi)}">
-                    Nessun tatuaggio caricato
-                </div>
-                <div th:each="tatuaggio : ${tatuaggi}">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg
-                                    aria-label="Placeholder: Thumbnail"
-                                    class="bd-placeholder-img card-img-top"
-                                    height="225"
-                                    preserveAspectRatio="xMidYMid slice"
-                                    role="img"
-                                    width="100%"
-                                    xmlns="http://www.w3.org/2000/svg"
+                <div th:each="tatuaggio : ${tatuaggi}" class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top"
+                             th:src="@{'/immagini/' + ${tatuaggio.immagine}}"
+                             alt="Tatuaggio"
+                             height="275"
+                             width="100%"
+                             style="object-fit: cover;"
+                        />
+                        <div class="card-body">
+                            <p class="card-text" >
+                                Tatuaggio: <span th:text="${tatuaggio.nome.toUpperCase()}"></span>,<br/>
+                                Stile: <span th:text="${tatuaggio.stile}"></span>,<br/>
+                                Colore: <span th:text="${tatuaggio.colore}"></span>
+
+                            </p>
+                            <div
+                                    class="d-flex justify-content-between align-items-center"
                             >
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                                    Thumbnail
-                                </text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit
-                                    longer.
-                                </p>
-                                <div
-                                        class="d-flex justify-content-between align-items-center"
-                                >
-                                    <div class="btn-group">
-                                        <button
-                                                type="button"
-                                                class="btn btn-sm btn-outline-secondary"
-                                        >
-                                            View
-                                        </button>
-                                        <button
-                                                type="button"
-                                                class="btn btn-sm btn-outline-secondary"
-                                        >
-                                            Edit
-                                        </button>
-                                    </div>
-                                    <small class="text-body-secondary">9 mins</small>
+                                <div class="btn-group">
+                                    <button
+                                            type="button"
+                                            class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        View
+                                    </button>
+                                    <button
+                                            type="button"
+                                            class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        Edit
+                                    </button>
                                 </div>
+                                <small class="text-body-secondary" th:text="${#temporals.format(tatuaggio.data, 'dd/MM/yyyy')}"></small>
                             </div>
                         </div>
                     </div>
@@ -76,6 +72,7 @@
             </div>
         </div>
     </div>
+
 </main>
 <div th:insert="~{fragments/foot.html :: foot}"></div>
 </body>
