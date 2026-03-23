@@ -32,7 +32,9 @@ public class TatuaggioServiceImpl implements TatuaggioService {
     @Override
     @Transactional
     public TatuaggioDto insTatuaggio(TatuaggioValidatorDto tatuaggioValidatorDto, MultipartFile file) {
-
+        if (file == null || file.isEmpty()){
+            throw new FileStorageException("L'immagine del tatuaggio è OBBLIGATORIA");
+        }
         String immagine = fileStorageService.salvaFile(file,"tatuaggi");
         Tatuaggio t = tatuaggioMapper.toEntity(tatuaggioValidatorDto);
         t.setImmagine(immagine);

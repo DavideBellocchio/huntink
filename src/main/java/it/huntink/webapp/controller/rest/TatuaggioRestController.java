@@ -34,9 +34,6 @@ public class TatuaggioRestController {
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<TatuaggioDto> createTatuaggio(@Valid @RequestPart("tatuaggio") TatuaggioValidatorDto tatuaggioValidatorDto, @RequestPart("immagine") MultipartFile file){
-        if (file == null || file.isEmpty()){
-            throw new FileStorageException("L'immagine del tatuaggio è OBBLIGATORIA");
-        }
         TatuaggioDto t = tatuaggioService.insTatuaggio(tatuaggioValidatorDto, file);
         return ResponseEntity.status(HttpStatus.CREATED).body(t);
     }
