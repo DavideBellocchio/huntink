@@ -19,4 +19,7 @@ public interface TatuaggioRepository extends JpaRepository<Tatuaggio, Long> {
     List<Tatuaggio> findByColore(ColoreTatuaggio colore);
 
     List<Tatuaggio> findByStile(StileTatuaggio stile);
+
+    @Query(value = "SELECT * FROM tatuaggio t ORDER BY t.data desc", nativeQuery = true)
+    List<Tatuaggio> findAllOrderByData();
 }

@@ -2,6 +2,10 @@ package it.huntink.webapp.exception.mvc;
 
 import it.huntink.webapp.exception.FileStorageException;
 import it.huntink.webapp.exception.TatuaggioNotFoundException;
+import it.huntink.webapp.model.dto.TatuaggioDto;
+import it.huntink.webapp.model.dto.validator.TatuaggioValidatorDto;
+import it.huntink.webapp.model.enums.ColoreTatuaggio;
+import it.huntink.webapp.model.enums.StileTatuaggio;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,9 +27,11 @@ public class MvcExceptionHandler {
     @ExceptionHandler(FileStorageException.class)
     public String handleFileStorage(FileStorageException ex, Model model){
 
-        model.addAttribute("message", ex.getMessage());
-
-        return "";
+        model.addAttribute("error", ex.getMessage());
+        model.addAttribute("tatuaggio", new TatuaggioValidatorDto());
+        model.addAttribute("stili", StileTatuaggio.values());
+        model.addAttribute("colori", ColoreTatuaggio.values());
+        return "instatuaggio";
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

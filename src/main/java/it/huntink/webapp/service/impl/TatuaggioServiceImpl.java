@@ -45,7 +45,7 @@ public class TatuaggioServiceImpl implements TatuaggioService {
 
     @Override
     public List<TatuaggioDto> selTatuaggi() {
-        return tatuaggioRepository.findAll()
+        return tatuaggioRepository.findAllOrderByData()
                 .stream()
                 .map(tatuaggioMapper::toResponseDto)
                 .toList();

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class TatuaggioValidatorDto {
 
 
-    @Size(min = 5, max = 30, message = "{Size.Tatuaggio.nome.Validation}")
+    @Size(min = 2, max = 30, message = "{Size.Tatuaggio.nome.Validation}")
     @NotBlank(message = "{NotBlank.Tatuaggio.nome.Validation}")
     private String nome;
 
