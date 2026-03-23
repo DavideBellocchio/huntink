@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="d-flex flex-column min-vh-100">
+<div th:insert="~{fragments/header.html :: header}"></div>
+<main class="flex-fill bg-body-tertiary">
+
+    <div class="d-flex justify-content-center mt-5 mb-5">
+
+        <div class="card shadow-sm mt-4" style="width: 450px;height: 500px;">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Nuovo Tatuaggio</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome tatuaggio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stile" class="form-label">Stile</label>
+                        <input type="text" class="form-control" id="stile" placeholder="Stile tatuaggio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="colore" class="form-label">Colore</label>
+                        <input type="text" class="form-control" id="colore" placeholder="Colore tatuaggio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="immagine" class="form-label">Immagine</label>
+                        <input type="file" class="form-control" id="immagine" placeholder="Immagine tatuaggio">
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Inserisci</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+<div th:insert="~{fragments/foot.html :: foot}"></div>
+</body>
+
+</html>

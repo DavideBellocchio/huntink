@@ -44,5 +44,12 @@ public class TatuaggioMvcController {
         return "tatuaggi";
     }
 
+    @GetMapping("/new")
+    public String newTatuaggio(Model model)
+    {
+        model.addAttribute("tatuaggio", new TatuaggioDto());
+        return "instatuaggio";
+    }
+
 
 }
